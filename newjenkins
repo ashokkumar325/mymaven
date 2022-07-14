@@ -1,0 +1,27 @@
+node('built-in')
+{
+    stage('continousdownlode')
+    {
+      git 'https://github.com/ashokkumar325/mymaven.git'
+    }
+    stage('continousbuild')
+    {
+      sh 'mvn package'
+    }
+    stage('continous deploy')
+    {
+       deploy adapters: [tomcat9(credentialsId: '6900904a-8cc7-4770-9423-b1b8f8e1bac9', path: '', url: 'http://172.31.31.14:8080')], contextPath: 'testapp', war: '**/*.war'
+    }
+     stage('continoustesting')
+    {
+      git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
+      
+      sh 'java -jar /home/ubuntu/.jenkins/workspace/scripetedpipeline1/testing.jar'
+    }
+    stage('continous deliver')
+    {
+      input message: 'need approvals from DM!', submitter: 'raj'
+     deploy adapters: [tomcat9(credentialsId: '46c65d0e-4da7-4e88-af07-8a13fc6cf75f', path: '', url: 'http://172.31.10.108:8080')], contextPath: 'prodapp', war: '**/*.war'
+    }
+    
+} 
