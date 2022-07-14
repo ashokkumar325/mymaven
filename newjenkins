@@ -16,7 +16,7 @@ node('built-in')
     {
       git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
       
-      sh 'java -jar /home/ubuntu/.jenkins/workspace/scripetedpipeline1/testing.jar'
+      sh 'java -jar /var/lib/jenkins/workspace/freestyle_test/testing.jar'
     }
     stage('continous deliver')
     {
