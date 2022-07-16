@@ -3,7 +3,7 @@ pipeline
     agent any
     stages
     {
-        stage('continous downlode')
+        stage('continous download')
         {
             steps
             {
@@ -15,7 +15,7 @@ pipeline
                     }
                     catch(Exception e1)
                     {
-                       mail bcc: '', body: 'unable to Downlaod from git  ', cc: '', from: '', replyTo: '', subject: 'download failed', to: 'git.team@gmail.com'
+                       mail bcc: '', body: 'unable to Download from git  ', cc: '', from: '', replyTo: '', subject: 'download failed', to: 'git.team@gmail.com'
                        exit(1)
                     }
                 }
@@ -41,7 +41,7 @@ pipeline
                
             }
         }
-        stage('continous deploye')
+        stage('continous deploy')
         {
             steps
             {
@@ -81,7 +81,7 @@ pipeline
             
             }
         }
-        stage('continous delevery')
+        stage('continous delivery')
         {
             steps
             {
@@ -93,7 +93,7 @@ pipeline
                     }
                     catch(Exception e5)
                     {
-                      mail bcc: '', body: 'jenkins is unable to delevery to client', cc: '', from: '', replyTo: '', subject: 'delevery  failed', to: 'delvery.team@gmail.com'  
+                      mail bcc: '', body: 'jenkins is unable to delivery to client', cc: '', from: '', replyTo: '', subject: 'delevery  failed', to: 'delivery.team@gmail.com'  
                     }
                 }
 
