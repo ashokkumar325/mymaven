@@ -31,7 +31,7 @@ pipeline
             steps
             {
                 git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-                sh label: '', script: 'java -jar /var/lib/jenkins/workspace/DeclarativePipeline/testing.jar'
+                sh label: '', script: 'java -jar /var/lib/jenkins/workspace/declarativepipeline1/testing.jar'
             }
         }
         stage('ContinuousDelivery')
