@@ -22,7 +22,7 @@ pipeline
         {
             steps
             {
-                sh label: '', script: 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/declarativepipeline1/webapp/target/webapp.war ubuntu@172.31.31.14:/var/lib/tomcat9/webapps/testwebapp.war'
+                sh label: '', script: 'scp  /var/lib/jenkins/workspace/declarativepipeline1/webapp/target/webapp.war ubuntu@172.31.31.14:/var/lib/tomcat9/webapps/testwebapp.war'
             }
             
         }
@@ -39,7 +39,7 @@ pipeline
            steps
            {
                input message: 'Waiting for Approval from the DM!', submitter: 'ashok'
-               sh label: '', script: 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/declarativepipeline1/webapp/target/webapp.war ubuntu@172.31.10.108:/var/lib/tomcat9/webapps/prodwebapp.war'
+               sh label: '', script: 'scp  /var/lib/jenkins/workspace/declarativepipeline1/webapp/target/webapp.war ubuntu@172.31.10.108:/var/lib/tomcat9/webapps/prodwebapp.war'
            }
         }
     }
