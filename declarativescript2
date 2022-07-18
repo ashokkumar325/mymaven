@@ -1,0 +1,47 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('continous downlod')
+        {
+            steps
+            {
+                git 'https://github.com/ashokkumar325/mymaven.git'
+            }
+        }
+        stage('continous bulid')
+        {
+            steps
+            {
+              sh 'mvn package'  
+            }
+        }
+        stage('continous deploy')
+        {
+            steps
+            {
+               deploy adapters: [tomcat9(credentialsId: '6900904a-8cc7-4770-9423-b1b8f8e1bac9', path: '', url: 'http://172.31.31.14:8080')], contextPath: 'qaapp', war: '**/*.war'
+            }
+        }
+        stage('continous testing')
+        {
+            steps
+            {
+               git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
+               sh 'java -jar /var/lib/jenkins/workspace/freestyle_test/testing.jar'
+            }
+        }
+    }
+    post
+    {
+       success
+       {
+          deploy adapters: [tomcat9(credentialsId: '6900904a-8cc7-4770-9423-b1b8f8e1bac9', path: '', url: 'http://172.31.10.108:8080')], contextPath: 'myapp', war: '**/*.war'
+       }
+       failure
+       {
+           mail bcc: '', body: 'CI failed', cc: '', from: '', replyTo: '', subject: 'CI failed', to: 'modiashok1997@gmil.com' 
+       }
+    }
+}

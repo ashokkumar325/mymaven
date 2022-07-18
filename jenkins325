@@ -1,0 +1,30 @@
+@Library('mylibrary')_
+pipeline
+{
+    agent any
+    stages
+    {
+        stage("continous download_lones")
+        {
+            steps
+            {
+                script
+                {
+                   cicd.newgit("https://github.com/ashokkumar325/mymaven.git")
+                }
+            }
+        }
+        stage("continous build_lones")
+        {
+            steps
+            {
+                 script
+                 {
+                    cicd.newmaven()
+                 }
+            
+            }
+            
+         }
+         
+}
