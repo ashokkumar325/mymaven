@@ -1,10 +1,10 @@
-@Lib;rary('mylibrary')_
+@Library('mylibrary')_
 pipeline
 {
     agent any
     stages
     {
-        stage("continous download")
+        stage("continous download_lones")
         {
             steps
             {
@@ -14,7 +14,7 @@ pipeline
                 }
             }
         }
-        stage("continous build")
+        stage("continous build_lones")
         {
             steps
             {
