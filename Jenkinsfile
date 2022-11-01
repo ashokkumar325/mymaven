@@ -10,7 +10,7 @@ node('built-in')
     }
     stage('continousdeploye') 
     {
-        deploy adapters: [tomcat9(credentialsId: 'f37ebbb1-3e49-4358-b506-0aa10ce3230b', path: '', url: 'http://172.31.24.2:8080')], contextPath: 'testapp', war: '**/*.war'
+        deploy adapters: [tomcat9(credentialsId: 'f37ebbb1-3e49-4358-b506-0aa10ce3230b', path: '', url: 'http://172.31.19.182:8080')], contextPath: 'testapp', war: '**/*.war'
     }
     stage('continoustesting') 
     {
@@ -21,4 +21,5 @@ node('built-in')
     {
         deploy adapters: [tomcat9(credentialsId: 'f37ebbb1-3e49-4358-b506-0aa10ce3230b', path: '', url: 'http://172.31.16.152:8080')], contextPath: 'myapp', war: '**/*.war'
     }
+}
     
