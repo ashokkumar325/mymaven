@@ -34,26 +34,5 @@ pipeline
                 }
             }
         }
-        stage('countinoustesting_master')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.newGit("https://github.com/ashokkumar325/Functionaltesting.git")
-                    cicd.newSelenium("sharedlibrary1")
-                }
-            }
-        }
-        stage('countinousdelivery_master')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.newDeploy("sharedlibrary1","172.31.94.209","prodapp")
-                }
-            }
-        }
     }
 }
