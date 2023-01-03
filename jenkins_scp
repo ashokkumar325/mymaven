@@ -45,15 +45,5 @@ pipeline
                 }
             }
         }
-        stage('countinousdelivery_master')
-        {
-            steps
-            {
-                script
-                {
-                    cicd.newDeploy("sharedlibrary1","172.31.94.209","prodapp")
-                }
-            }
-        }
     }
 }
