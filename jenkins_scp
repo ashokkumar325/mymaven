@@ -1,1 +1,59 @@
-
+@Library('newlibrary')_
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('countinousdownload_master')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newGit("https://github.com/ashokkumar325/java.git")
+                }
+            }
+        }
+        stage('countinousbuild_master')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newMaven()
+                }
+            }
+        }
+        stage('countinousdeploy_master')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newDeploy("sharedlibrary1","172.31.93.91","testapp")
+                }
+            }
+        }
+        stage('countinoustesting_master')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newGit("https://github.com/ashokkumar325/Functionaltesting.git")
+                    cicd.newSelenium("sharedlibrary1")
+                }
+            }
+        }
+        stage('countinousdelivery_master')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newDeploy("sharedlibrary1","172.31.94.209","prodapp")
+                }
+            }
+        }
+    }
+}
