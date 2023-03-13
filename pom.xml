@@ -128,7 +128,7 @@
 
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>2.5</version>a
+          <version>2.5</version>
         </plugin>
 
         <plugin>
